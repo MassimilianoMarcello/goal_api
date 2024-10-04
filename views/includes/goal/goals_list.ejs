@@ -9,6 +9,7 @@
                 <th class="text-left p-4 border-b border-gray-300">Priority</th>
                 <th class="text-left p-4 border-b border-gray-300">Completed</th>
                 <th class="text-left p-4 border-b border-gray-300">Details</th>
+                <th class="text-left p-4 border-b border-gray-300">Actions</th> <!-- Nuova intestazione per le azioni -->
             </tr>
         </thead>
         <tbody>
@@ -25,11 +26,18 @@
                             View Details
                         </a>
                     </td>
+                    <td class="p-4">
+                        <a href="/api/<%= goal.id %>/edit" class="bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-600" style="background-color: #fbbf24 !important; color: #000 !important;">
+                            Edit
+                        </a>
+                    </td>
+                    <!-- Pulsante per modificare il goal -->
                 </tr>
             <% }); %>
         </tbody>
     </table>
 </div>
+
 
   
   

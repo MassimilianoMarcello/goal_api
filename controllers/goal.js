@@ -45,7 +45,46 @@ const controllers = {
         };
         Goal.addGoal(addNewGoal);
         res.status(200).redirect('/api/goals_list');
-    }
+    },
+    updateGoalForm: (req, res) => {
+        const goalId = req.params.id;
+        const goal = Goal.getById(goalId);
+        if (goal) {
+            res.status(200).render('layout', {
+                title: `Update Goal: ${goal.name}`,
+                body: 'includes/goal/updateGoalForm', // crea un template per il modulo di aggiornamento
+                goal
+            });
+        } else {
+            res.status(404).render('404', {
+                title: '404 Page',
+                message: 'Goal not found'
+            });
+        }
+    },
+
+    updateGoal: (req, res) => {
+        const { id } = req.params;
+        const updatedGoal = {
+            name: req.body.name,
+            description: req.body.description,
+            starting: req.body.starting,
+            finishing: req.body.finishing,
+            status: req.body.status,
+            priority: req.body.priority,
+            completed: req.body.completed === "yes" // Assumendo che "completed" sia un checkbox
+        };
+        const goal = Goal.updateGoal(id, updatedGoal);
+        if (goal) {
+            res.redirect(`/api/goals_list`); 
+        } else {
+            res.status(404).render('404', {
+                title: '404 Page',
+                message: 'Goal not found'
+            });
+        }
+    },
+
 };
 
 export default controllers;
