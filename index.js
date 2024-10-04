@@ -1,5 +1,6 @@
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
+import methodOverride from 'method-override';
 
 import express from 'express';
 import dotenv from 'dotenv';
@@ -9,6 +10,8 @@ import cookieParser from 'cookie-parser';
 import logger from './middleware/logger.js';
 
 // import routes
+import goalRoutes from './routes/goal.js';
+import userRoutes from './routes/user.js';
 
 // load environment variables
 dotenv.config();
@@ -24,6 +27,7 @@ const app = express();
 // parses
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
 app.use(cookieParser());
 
 // serve static files
@@ -37,6 +41,8 @@ app.set('views', path.join(PATH, 'views'));
 app.use(logger);
 
 // use routes
+app.use('/api',goalRoutes)
+app.use('/api',userRoutes)
 
 // handle 404
 app.use('*', (req, res) => {
