@@ -50,9 +50,9 @@ class Goal {
             goal.description = updatedData.description || goal.description;
             goal.starting = updatedData.starting || goal.starting;
             goal.finishing = updatedData.finishing || goal.finishing;
-            goal.status = updatedData.status || goal.status;
+         
             goal.priority = updatedData.priority || goal.priority;
-            goal.completed = updatedData.completed; // Non serve || goal.completed, poiché l'input viene sempre sovrascritto
+         
             return goal;
         }
         return null; // Goal non trovato

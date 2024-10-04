@@ -30,18 +30,18 @@ const controllers = {
             description,
             starting,
             finishing,
-            status,
+          
             priority,
-            completed
+            
         } = req.body;
         const addNewGoal = {
             name,
             description,
             starting,
             finishing,
-            status,
+          
             priority,
-            completed: completed === 'no'
+           
         };
         Goal.addGoal(addNewGoal);
         res.status(200).redirect('/api/goals_list');
@@ -70,9 +70,9 @@ const controllers = {
             description: req.body.description,
             starting: req.body.starting,
             finishing: req.body.finishing,
-            status: req.body.status,
+         
             priority: req.body.priority,
-            completed: req.body.completed === "yes" // Assumendo che "completed" sia un checkbox
+          
         };
         const goal = Goal.updateGoal(id, updatedGoal);
         if (goal) {

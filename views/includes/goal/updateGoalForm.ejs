@@ -4,11 +4,7 @@
     <input type="date" name="starting" value="<%= goal.starting %>" required class="border p-2 w-full" />
     <input type="date" name="finishing" value="<%= goal.finishing %>" required class="border p-2 w-full" />
     
-    <select name="status" required class="border p-2 w-full">
-        <option value="Pending" <%= goal.status === 'Pending' ? 'selected' : '' %>>Pending</option>
-        <option value="In Progress" <%= goal.status === 'In Progress' ? 'selected' : '' %>>In Progress</option>
-        <option value="Completed" <%= goal.status === 'Completed' ? 'selected' : '' %>>Completed</option>
-    </select>
+
     
     <select name="priority" required class="border p-2 w-full">
         <option value="Low" <%= goal.priority === 'Low' ? 'selected' : '' %>>Low</option>
@@ -16,11 +12,7 @@
         <option value="High" <%= goal.priority === 'High' ? 'selected' : '' %>>High</option>
     </select>
     
-    <input type="hidden" name="completed" value="no">
-    <label>
-        <input type="checkbox" name="completed" value="yes" <%= goal.completed ? 'checked' : '' %> />
-        Completed
-    </label>
+
 
     <button type="submit" class="bg-blue-500 text-white p-2 rounded">Update Goal</button>
 </form>

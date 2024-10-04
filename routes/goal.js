@@ -13,8 +13,13 @@ router.post('/add-goal',addGoal)
 
 
 router.get('/:id',getDetails)
+// update goals
 router.get('/:id/edit', updateGoalForm); // per mostrare il modulo di modifica
 router.post('/:id/update', updateGoal); // per inviare l'aggiornamento
+
+// complete goal
+
+
 
 
 export default router;
