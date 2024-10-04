@@ -1,0 +1,15 @@
+<div class="min-h-screen flex items-center justify-center bg-gray-100">
+    <div class="container mx-auto p-6 bg-white shadow-lg rounded-lg border-4 border-blue-800">
+        <h1 class="text-3xl font-bold mb-6 text-center text-blue-800">Dettagli Goal: <%= goal.name %></h1>
+        
+        <div class="space-y-4">
+            <p class="text-lg"><strong class="text-blue-800">Description:</strong> <%= goal.description %></p>
+            <p class="text-lg"><strong class="text-blue-800">Start Date:</strong> <%= goal.starting %></p>
+            <p class="text-lg"><strong class="text-blue-800">End Date:</strong> <%= goal.finishing %></p>
+            <p class="text-lg"><strong class="text-blue-800">Status:</strong> <%= goal.status %></p>
+            <p class="text-lg"><strong class="text-blue-800">Priority:</strong> <%= goal.priority %></p>
+            <p class="text-lg"><strong class="text-blue-800">Completed:</strong> <%= goal.completed ? 'Yes' : 'No' %></p>
+        </div>
+    </div>
+</div>
+

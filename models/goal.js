@@ -27,6 +27,24 @@ const goals = [
 class Goal {
     static getGoalsList() {
         return goals;
-    }}
+    }
+    static getById(id){
+        return goals.find(goal=>{return goal.id===id})
+    }
+    static addGoal(goal){
+        const newGoal = {
+            id:Id(),
+            ...goal
+        }
+        goals.push(newGoal)
+        return 
+        newGoal
+   
+   
+        
+    }
+
+}
+
 
     export default Goal

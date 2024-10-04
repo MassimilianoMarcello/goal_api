@@ -3,9 +3,15 @@ import controllers from '../controllers/goal.js';
 
 const router = express.Router();
 
-const{getAllGoals}=controllers
+const{getAllGoals,getDetails,addGoal,addGoalForm}=controllers
 // routes
 
-router.get('/',getAllGoals)
+router.get('/goals_list',getAllGoals)
+
+router.get('/add-goal',addGoalForm)
+router.post('/add-goal',addGoal)
+
+
+router.get('/:id',getDetails)
 
 export default router;
