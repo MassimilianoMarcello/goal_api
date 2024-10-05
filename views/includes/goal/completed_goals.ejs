@@ -1,18 +1,30 @@
-<% console.log(completedGoals); %> <!-- Logga i dati dei goal completati in console -->
+<h1 class="text-3xl font-bold text-center my-6 text-gray-800">Completed Goals</h1>
+<div class="min-h-screen flex items-center justify-center bg-gray-100">
 
-<h1>Completed Goals</h1>
+
+   
+
 <% if (completedGoals.length > 0) { %>
-    <ul>
-        <% completedGoals.forEach(goal => { %>
-            <li>
-                <strong><%= goal.name %></strong>: <%= goal.description %> <br>
-                <em>Starting: <%= goal.starting %>, Finishing: <%= goal.finishing %></em>
+    <ul class="space-y-4">
+        <% completedGoals.forEach(function(goal) { %>
+            <li class="bg-white shadow-md rounded-lg p-4 flex flex-col md:flex-row justify-between items-start md:items-center">
+                <div>
+                    <h2 class="text-lg  text-gray-900"><%= goal.name %></h2>
+                    <p class="text-gray-600"><%= goal.description %></p>
+                </div>
+                <div class="mt-2 md:mt-0">
+                    <span class="inline-block bg-green-500 text-white text-sm font-semibold px-3 py-1 rounded-full">Completed</span>
+                </div>
             </li>
-        <% }); %>
+        <% }) %>
     </ul>
 <% } else { %>
-    <p>No completed goals found.</p>
+    <p class="text-center text-gray-500 mt-6">No completed goals found</p>
 <% } %>
+</div>
+
+
+
 
 
 

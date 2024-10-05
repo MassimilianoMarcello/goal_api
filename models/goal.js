@@ -24,44 +24,39 @@ const goals = [
   ];
   
 
-  const completedGoals = [];
+
 
   class Goal {
-      static goals = goals; // Array di obiettivi
-      static completedGoals = completedGoals; // Array di obiettivi completati
+    static goals = goals; 
+   
   
-      static getGoalsList() {
-          return this.goals;
-      }
   
-      static getCompletedGoals() {
-          return this.completedGoals; // Restituisce l'array degli obiettivi completati
-      }
+    static getGoalsList() {
+        return goals.filter(goal => goal.completed === false)
+    }
+
+    static getCompletedGoals() {
+        return this.goals.filter(goal => goal.completed === true); // Filtra i goal completati
+    }
+    
+  
+     
   
       static getById(id) {
-          return this.goals.find(goal => goal.id === id);
+          return goals.find(goal => goal.id === id);
       }
   
       static addGoal(goal) {
           const newGoal = {
               id: Id(),
               ...goal,
-              completed: false // Assicurati che i nuovi goal siano incompleti
+              completed: false 
           };
-          this.goals.push(newGoal);
+          goals.push(newGoal);
           return newGoal;
       }
   
-      static completeGoal(id) {
-          const goal = this.getById(id);
-          if (goal) {
-              goal.completed = true; // Modifica il campo completed a true
-              this.completedGoals.push(goal); // Aggiungi l'obiettivo completato all'array
-              this.goals = this.goals.filter(g => g.id !== id); // Rimuovi l'obiettivo dalla lista principale
-              return goal;
-          }
-          return null; // Obiettivo non trovato
-      }
+      
   
       static updateGoal(id, updatedData) {
           const goal = this.getById(id);
@@ -75,7 +70,15 @@ const goals = [
           }
           return null; // Goal non trovato
       }
-      
+
+      static completeGoal(id) {
+        const goal = this.getById(id);
+        if (goal) {
+            goal.completed = !goal.completed; // Inverte lo stato da true a false e viceversa
+            return goal;
+        }
+        return null; // Obiettivo non trovato
+    }
   }
   
   export default Goal;

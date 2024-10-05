@@ -9,6 +9,15 @@ const controllers = {
             goals
         });
     },
+    getCompletedGoals:(req,res)=>{
+        const goals=Goal.getCompletedGoals();
+        res.status(200).render('layout', {
+            title: 'My goals',
+            body: 'includes/goal/completed_goals',
+            goals
+        });
+
+    },
     getDetails: (req, res) => {
         const goalId = req.params.id;
         const goal = Goal.getById(goalId);
@@ -86,11 +95,9 @@ const controllers = {
     },
     completeGoal: (req, res) => {
         const { id } = req.params;
-        const completedGoal = Goal.completeGoal(id); // Completa l'obiettivo
-        if (completedGoal) {
-            console.log('Completed Goal:', completedGoal);
-            console.log('Completed Goals List:', Goal.getCompletedGoals());
-            res.status(200).redirect('/api/goals_list'); // Reindirizza alla pagina dei goal
+        const goal = Goal.completeGoal(id); // Completa l'obiettivo
+        if (goal) {
+            res.status(200).redirect('/api/goals_list'); // Reindirizza alla lista dopo il completamento
         } else {
             res.status(404).render('404', {
                 title: '404 Page',
@@ -99,18 +106,16 @@ const controllers = {
         }
     },
     getCompletedGoals: (req, res) => {
-        console.log('Fetching completed goals...');
-        const completedGoalsList = Goal.getCompletedGoals();
-        console.log('Completed Goals List:', completedGoalsList); 
-        if (completedGoalsList.length === 0) {
-            console.log('No completed goals found.');
-        }
+        const completedGoals = Goal.getCompletedGoals(); // Ottiene la lista dei goal completati
         res.status(200).render('layout', {
             title: 'Completed Goals',
-            body: 'includes/goal/completed_goals', // Assicurati che il percorso sia corretto
-            completedGoals: completedGoalsList
+            body: 'includes/goal/completed_goals',
+            completedGoals // Passa la lista dei goal completati alla vista
         });
     }
+    
+    
+   
     
     
 
