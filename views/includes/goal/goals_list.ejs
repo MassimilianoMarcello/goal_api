@@ -7,7 +7,8 @@
                 <th class="text-left p-4 border-b border-gray-300">End Date</th>
                 <th class="text-left p-4 border-b border-gray-300">Priority</th>
                 <th class="text-left p-4 border-b border-gray-300">Details</th>
-                <th class="text-left p-4 border-b border-gray-300">Actions</th>
+                <th class="text-left p-4 border-b border-gray-300">Actions:</th>
+                <th class="text-left p-4 border-b border-gray-300">Modify</th>
                 <th class="text-left p-4 border-b border-gray-300">Complete</th>
                 <th class="text-left p-4 border-b border-gray-300">Delete</th>
             </tr>
@@ -19,11 +20,13 @@
                     <td class="p-4"><%= goal.starting %></td>
                     <td class="p-4"><%= goal.finishing %></td>
                     <td class="p-4"><%= goal.priority %></td>
+                  
                     <td class="p-4">
                         <a href="/api/<%= goal.id %>" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
                             View Details
                         </a>
                     </td>
+                    <td class="p-4"></td>
                     <td class="p-4">
                         <a href="/api/<%= goal.id %>/edit" class="bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-600" style="background-color: #fbbf24 !important; color: #000 !important;">
                             Edit
@@ -31,7 +34,7 @@
                     </td>
                     <td class="p-4">
                         <form action="/api/<%= goal.id %>/complete" method="POST">
-                            <button type="submit" <% if (goal.completed) { %>disabled class="bg-gray-400 text-gray-700 cursor-not-allowed"<% } %> class="bg-yellow-500 !important text-black px-4 py-2 rounded hover:bg-yellow-600  transition duration-200 ease-in-out">
+                            <button type="submit" <% if (goal.completed) { %>disabled class="bg-gray-400 text-gray-700 cursor-not-allowed"<% } %> class="bg-yellow-500 !important text-black px-4 py-2 rounded hover:bg-yellow-600  transition duration-200 ease-in-out"style="background-color:lightgreen !important; color: #000 !important;">
                                 Complete
                             </button>
                         </form>

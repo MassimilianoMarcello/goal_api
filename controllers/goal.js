@@ -107,18 +107,30 @@ const controllers = {
         const deleted = Goal.deleteGoal(goalId); // Chiama il metodo deleteGoal con l'ID
     
         if (deleted) {
-            // Ottieni l'elenco aggiornato dei goal
-            const goals = Goal.getGoalsList(); 
-            // Renderizza la pagina dei goal con i dati aggiornati
-            res.status(200).render('layout', {
-                title: 'Goals List',
-                body: 'includes/goal/goals_list', // Percorso del template della lista dei goal
-                goals // Passa l'array aggiornato di goal al template
-            });
+            const redirectPage = req.body.redirect; // Ottieni il valore di redirect dal body della richiesta
+    
+            // Controlla quale pagina reindirizzare
+            if (redirectPage === 'completed_goals') {
+                const completedGoals = Goal.getCompletedGoals(); // Ottieni la lista dei goal completati
+                res.status(200).render('layout', {
+                    title: 'Completed Goals',
+                    body: 'includes/goal/completed_goals', // Percorso del template per i goal completati
+                    completedGoals // Passa l'array aggiornato di goal completati al template
+                });
+            } else {
+                const goals = Goal.getGoalsList(); // Ottieni l'elenco aggiornato dei goal
+                res.status(200).render('layout', {
+                    title: 'Goals List',
+                    body: 'includes/goal/goals_list', // Percorso del template della lista dei goal
+                    goals // Passa l'array aggiornato di goal al template
+                });
+            }
         } else {
             res.status(404).send('Goal not found'); // Gestisci il caso in cui il goal non viene trovato
         }
     }
+    
+    
     
     
     
