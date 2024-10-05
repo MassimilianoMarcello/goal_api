@@ -9,15 +9,15 @@ const controllers = {
             goals
         });
     },
-    getCompletedGoals:(req,res)=>{
-        const goals=Goal.getCompletedGoals();
-        res.status(200).render('layout', {
-            title: 'My goals',
-            body: 'includes/goal/completed_goals',
-            goals
-        });
+    // getCompletedGoals:(req,res)=>{
+    //     const goals=Goal.getCompletedGoals();
+    //     res.status(200).render('layout', {
+    //         title: 'My goals',
+    //         body: 'includes/goal/completed_goals',
+    //         goals
+    //     });
 
-    },
+    // },
     getDetails: (req, res) => {
         const goalId = req.params.id;
         const goal = Goal.getById(goalId);
@@ -34,23 +34,13 @@ const controllers = {
         });
     },
     addGoal: (req, res) => {
-        const {
-            name,
-            description,
-            starting,
-            finishing,
-          
-            priority,
-            
-        } = req.body;
+        const { name, description, starting, finishing, priority } = req.body;
         const addNewGoal = {
             name,
             description,
             starting,
             finishing,
-          
-            priority,
-           
+            priority
         };
         Goal.addGoal(addNewGoal);
         res.status(200).redirect('/api/goals_list');
@@ -79,13 +69,12 @@ const controllers = {
             description: req.body.description,
             starting: req.body.starting,
             finishing: req.body.finishing,
-         
-            priority: req.body.priority,
-          
+
+            priority: req.body.priority
         };
         const goal = Goal.updateGoal(id, updatedGoal);
         if (goal) {
-            res.redirect(`/api/goals_list`); 
+            res.redirect(`/api/goals_list`);
         } else {
             res.status(404).render('404', {
                 title: '404 Page',
@@ -112,13 +101,10 @@ const controllers = {
             body: 'includes/goal/completed_goals',
             completedGoals // Passa la lista dei goal completati alla vista
         });
-    }
-    
-    
-   
-    
-    
+    },
+    deleteGoal:(req,res)=>{
 
+    }
 };
 
 export default controllers;

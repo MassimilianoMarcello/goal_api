@@ -8,7 +8,9 @@
             <p class="text-lg"><strong class="text-blue-800">End Date:</strong> <%= goal.finishing %></p>
      
             <p class="text-lg"><strong class="text-blue-800">Priority:</strong> <%= goal.priority %></p>
-          
+            <form action="/api/<%= goal.id %>/complete" method="POST">
+                <button type="submit" <% if (goal.completed) { %>disabled<% } %> class="bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-600" style="background-color:#24fb73  !important; color: #000 !important;">Complete</button>
+            </form>
         </div>
     </div>
 </div>
