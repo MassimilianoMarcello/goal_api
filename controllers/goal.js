@@ -102,9 +102,26 @@ const controllers = {
             completedGoals // Passa la lista dei goal completati alla vista
         });
     },
-    deleteGoal:(req,res)=>{
-
+    deleteGoal: (req, res) => {
+        const goalId = req.params.id; // Ottieni l'ID dal parametro della richiesta
+        const deleted = Goal.deleteGoal(goalId); // Chiama il metodo deleteGoal con l'ID
+    
+        if (deleted) {
+            // Ottieni l'elenco aggiornato dei goal
+            const goals = Goal.getGoalsList(); 
+            // Renderizza la pagina dei goal con i dati aggiornati
+            res.status(200).render('layout', {
+                title: 'Goals List',
+                body: 'includes/goal/goals_list', // Percorso del template della lista dei goal
+                goals // Passa l'array aggiornato di goal al template
+            });
+        } else {
+            res.status(404).send('Goal not found'); // Gestisci il caso in cui il goal non viene trovato
+        }
     }
+    
+    
+    
 };
 
 export default controllers;

@@ -5,12 +5,11 @@
                 <th class="text-left p-4 border-b border-gray-300">Name</th>
                 <th class="text-left p-4 border-b border-gray-300">Start Date</th>
                 <th class="text-left p-4 border-b border-gray-300">End Date</th>
-           
                 <th class="text-left p-4 border-b border-gray-300">Priority</th>
-            
                 <th class="text-left p-4 border-b border-gray-300">Details</th>
-                <th class="text-left p-4 border-b border-gray-300">Actions</th> 
-                <th class="text-left p-4 border-b border-gray-300">Complete</th> 
+                <th class="text-left p-4 border-b border-gray-300">Actions</th>
+                <th class="text-left p-4 border-b border-gray-300">Complete</th>
+                <th class="text-left p-4 border-b border-gray-300">Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -19,9 +18,7 @@
                     <td class="p-4"><%= goal.name %></td>
                     <td class="p-4"><%= goal.starting %></td>
                     <td class="p-4"><%= goal.finishing %></td>
-                   
                     <td class="p-4"><%= goal.priority %></td>
-                 
                     <td class="p-4">
                         <a href="/api/<%= goal.id %>" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
                             View Details
@@ -31,19 +28,26 @@
                         <a href="/api/<%= goal.id %>/edit" class="bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-600" style="background-color: #fbbf24 !important; color: #000 !important;">
                             Edit
                         </a>
-                        <td class="p-4">
-                            <form action="/api/<%= goal.id %>/complete" method="POST">
-                                <button type="submit" <% if (goal.completed) { %>disabled<% } %> class="bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-600" style="background-color:#24fb73  !important; color: #000 !important;">Complete</button>
-                            </form>
-                        </td>
-                    
                     </td>
-                    <!-- Pulsante per modificare il goal -->
+                    <td class="p-4">
+                        <form action="/api/<%= goal.id %>/complete" method="POST">
+                            <button type="submit" <% if (goal.completed) { %>disabled class="bg-gray-400 text-gray-700 cursor-not-allowed"<% } %> class="bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-600 transition duration-200 ease-in-out">
+                                Complete
+                            </button>
+                        </form>
+                    </td>
+                    <td class="p-4">
+                        <form action="/api/delete/<%= goal.id %>?_method=DELETE" method="POST" class="delete-form">
+                            <button type="submit" style="background-color: red; color: white;">Delete Goal</button>
+                        </form>
+                        
+                    </td>
                 </tr>
             <% }); %>
         </tbody>
     </table>
 </div>
+
 
 
   

@@ -79,6 +79,17 @@ const goals = [
         }
         return null; // Obiettivo non trovato
     }
+    static deleteGoal(id) {
+        const index = this.goals.findIndex(goal => goal.id === id); // Trova l'indice del goal da eliminare
+        if (index !== -1) {
+            const deletedGoal = this.goals[index]; // Salva il goal eliminato
+            this.goals.splice(index, 1); // Rimuove il goal dall'array
+            return { success: true, deletedGoal }; // Restituisce un oggetto con il goal eliminato
+        }
+        return { success: false, message: 'Goal not found' }; // Restituisce un messaggio se non trovato
+    }
+    
+    
   }
   
   export default Goal;
