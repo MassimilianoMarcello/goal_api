@@ -28,7 +28,7 @@ const goals = [
         starting: '2024-10-04',
         finishing: '2024-12-04',
         status: 'in progress',  // 'todo', 'completed', 'in progress'
-        priority: 'high',       // 'low', 'medium', 'high'
+        priority: 'low',       // 'low', 'medium', 'high'
         completed: false
       },
       {
@@ -38,7 +38,7 @@ const goals = [
         starting: '2024-10-04',
         finishing: '2024-12-04',
         status: 'in progress',  // 'todo', 'completed', 'in progress'
-        priority: 'high',       // 'low', 'medium', 'high'
+        priority: 'medium',       // 'low', 'medium', 'high'
         completed: false
       },
     {

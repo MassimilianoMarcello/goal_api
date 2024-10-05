@@ -9,15 +9,7 @@ const controllers = {
             goals
         });
     },
-    // getCompletedGoals:(req,res)=>{
-    //     const goals=Goal.getCompletedGoals();
-    //     res.status(200).render('layout', {
-    //         title: 'My goals',
-    //         body: 'includes/goal/completed_goals',
-    //         goals
-    //     });
 
-    // },
     getDetails: (req, res) => {
         const goalId = req.params.id;
         const goal = Goal.getById(goalId);
