@@ -24,41 +24,58 @@ const goals = [
   ];
   
 
-class Goal {
-    static getGoalsList() {
-        return goals;
-    }
-    static getById(id){
-        return goals.find(goal=>{return goal.id===id})
-    }
-    static addGoal(goal){
-        const newGoal = {
-            id:Id(),
-            ...goal
-        }
-        goals.push(newGoal)
-        return 
-        newGoal
-   
-   
-        
-    }
-    static updateGoal(id, updatedData) {
-        const goal = goals.find(goal => goal.id === id);
-        if (goal) {
-            goal.name = updatedData.name || goal.name;
-            goal.description = updatedData.description || goal.description;
-            goal.starting = updatedData.starting || goal.starting;
-            goal.finishing = updatedData.finishing || goal.finishing;
-         
-            goal.priority = updatedData.priority || goal.priority;
-         
-            return goal;
-        }
-        return null; // Goal non trovato
-    }
+  const completedGoals = [];
 
-}
-
-
-    export default Goal
+  class Goal {
+      static goals = goals; // Array di obiettivi
+      static completedGoals = completedGoals; // Array di obiettivi completati
+  
+      static getGoalsList() {
+          return this.goals;
+      }
+  
+      static getCompletedGoals() {
+          return this.completedGoals; // Restituisce l'array degli obiettivi completati
+      }
+  
+      static getById(id) {
+          return this.goals.find(goal => goal.id === id);
+      }
+  
+      static addGoal(goal) {
+          const newGoal = {
+              id: Id(),
+              ...goal,
+              completed: false // Assicurati che i nuovi goal siano incompleti
+          };
+          this.goals.push(newGoal);
+          return newGoal;
+      }
+  
+      static completeGoal(id) {
+          const goal = this.getById(id);
+          if (goal) {
+              goal.completed = true; // Modifica il campo completed a true
+              this.completedGoals.push(goal); // Aggiungi l'obiettivo completato all'array
+              this.goals = this.goals.filter(g => g.id !== id); // Rimuovi l'obiettivo dalla lista principale
+              return goal;
+          }
+          return null; // Obiettivo non trovato
+      }
+  
+      static updateGoal(id, updatedData) {
+          const goal = this.getById(id);
+          if (goal) {
+              goal.name = updatedData.name || goal.name;
+              goal.description = updatedData.description || goal.description;
+              goal.starting = updatedData.starting || goal.starting;
+              goal.finishing = updatedData.finishing || goal.finishing;
+              goal.priority = updatedData.priority || goal.priority;
+              return goal;
+          }
+          return null; // Goal non trovato
+      }
+      
+  }
+  
+  export default Goal;

@@ -1,0 +1,18 @@
+<% console.log(completedGoals); %> <!-- Logga i dati dei goal completati in console -->
+
+<h1>Completed Goals</h1>
+<% if (completedGoals.length > 0) { %>
+    <ul>
+        <% completedGoals.forEach(goal => { %>
+            <li>
+                <strong><%= goal.name %></strong>: <%= goal.description %> <br>
+                <em>Starting: <%= goal.starting %>, Finishing: <%= goal.finishing %></em>
+            </li>
+        <% }); %>
+    </ul>
+<% } else { %>
+    <p>No completed goals found.</p>
+<% } %>
+
+
+

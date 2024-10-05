@@ -84,6 +84,35 @@ const controllers = {
             });
         }
     },
+    completeGoal: (req, res) => {
+        const { id } = req.params;
+        const completedGoal = Goal.completeGoal(id); // Completa l'obiettivo
+        if (completedGoal) {
+            console.log('Completed Goal:', completedGoal);
+            console.log('Completed Goals List:', Goal.getCompletedGoals());
+            res.status(200).redirect('/api/goals_list'); // Reindirizza alla pagina dei goal
+        } else {
+            res.status(404).render('404', {
+                title: '404 Page',
+                message: 'Goal not found'
+            });
+        }
+    },
+    getCompletedGoals: (req, res) => {
+        console.log('Fetching completed goals...');
+        const completedGoalsList = Goal.getCompletedGoals();
+        console.log('Completed Goals List:', completedGoalsList); 
+        if (completedGoalsList.length === 0) {
+            console.log('No completed goals found.');
+        }
+        res.status(200).render('layout', {
+            title: 'Completed Goals',
+            body: 'includes/goal/completed_goals', // Assicurati che il percorso sia corretto
+            completedGoals: completedGoalsList
+        });
+    }
+    
+    
 
 };
 
