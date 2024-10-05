@@ -31,14 +31,14 @@
                     </td>
                     <td class="p-4">
                         <form action="/api/<%= goal.id %>/complete" method="POST">
-                            <button type="submit" <% if (goal.completed) { %>disabled class="bg-gray-400 text-gray-700 cursor-not-allowed"<% } %> class="bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-600 transition duration-200 ease-in-out">
+                            <button type="submit" <% if (goal.completed) { %>disabled class="bg-gray-400 text-gray-700 cursor-not-allowed"<% } %> class="bg-yellow-500 !important text-black px-4 py-2 rounded hover:bg-yellow-600  transition duration-200 ease-in-out">
                                 Complete
                             </button>
                         </form>
                     </td>
                     <td class="p-4">
                         <form action="/api/delete/<%= goal.id %>?_method=DELETE" method="POST" class="delete-form">
-                            <button type="submit" style="background-color: red; color: white;">Delete Goal</button>
+                            <button type="submit" style="background-color: red; color: white;padding:.5rem;">Delete Goal</button>
                         </form>
                         
                     </td>

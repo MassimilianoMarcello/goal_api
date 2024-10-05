@@ -12,14 +12,44 @@ const goals = [
       completed: false
     },
     {
+        id: Id(),
+        name: 'Running',
+        description: 'Go at the canal and retourn',
+        starting: '2024-10-04',
+        finishing: '2024-12-04',
+        status: 'in progress',  // 'todo', 'completed', 'in progress'
+        priority: 'high',       // 'low', 'medium', 'high'
+        completed: true
+      },
+      {
+        id: Id(),
+        name: 'Guitar Lesson',
+        description: 'Go to the music school',
+        starting: '2024-10-04',
+        finishing: '2024-12-04',
+        status: 'in progress',  // 'todo', 'completed', 'in progress'
+        priority: 'high',       // 'low', 'medium', 'high'
+        completed: false
+      },
+      {
+        id: Id(),
+        name: 'Learn how to paint',
+        description: 'Watch a video tutorial',
+        starting: '2024-10-04',
+        finishing: '2024-12-04',
+        status: 'in progress',  // 'todo', 'completed', 'in progress'
+        priority: 'high',       // 'low', 'medium', 'high'
+        completed: false
+      },
+    {
       id: Id(),
-      name: 'Build a website',
-      description: 'Create a portfolio website using HTML, CSS, and JavaScript',
+      name: 'Learn Next js',
+      description: 'Use udemy course',
       starting: '2024-10-05',
       finishing: '2024-11-05',
       status: 'todo',
       priority: 'medium',
-      completed: false
+      completed: true
     }
   ];
   
