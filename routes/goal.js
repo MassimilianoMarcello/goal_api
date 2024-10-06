@@ -9,20 +9,20 @@ const{getAllGoals,getDetails,addGoal,addGoalForm,updateGoal,updateGoalForm,compl
 // List goals to complet
 router.get('/goals_list',getAllGoals)
 // Completed goals list
-router.get('/completed_goals', getCompletedGoals);
+router.get('/completed_goals',verifyToken, getCompletedGoals);
 
-router.get('/add-goal',addGoalForm)
+router.get('/add-goal',verifyToken,addGoalForm)
 router.post('/add-goal',addGoal)
 
 
-router.get('/:id',getDetails)
+router.get('/:id',verifyToken,getDetails)
 // update goals
-router.get('/:id/edit', updateGoalForm); // per mostrare il modulo di modifica
-router.post('/:id/update', updateGoal); // per inviare l'aggiornamento
+router.get('/:id/edit',verifyToken, updateGoalForm); // shows the modification form
+router.post('/:id/update',verifyToken, updateGoal); // to sent update
 
 // complete goal
 // Route per completare l'obiettivo
-router.post('/:id/complete', completeGoal); // Cambiato da GET a POST per completare il goal
+router.post('/:id/complete', completeGoal); 
 
 // delete goal
 
