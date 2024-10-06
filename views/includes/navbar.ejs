@@ -4,7 +4,15 @@
             <a   href="/api/goals_list">Goal Tracker</a>
         </div>
         <div class="space-x-4">
+
+            <% if(token){ %>
             <a
+                href="/user/logout"
+                class="text-white hover:bg-blue-500 hover:text-white px-3 py-2 rounded"
+                >Logout</a
+            >
+            <% } else { %>
+                <a
                 href="/user/login"
                 class="text-white hover:bg-blue-500 hover:text-white px-3 py-2 rounded"
                 >Login</a
@@ -14,11 +22,10 @@
                 class="text-white hover:bg-blue-500 hover:text-white px-3 py-2 rounded"
                 >Register</a
             >
-            <a
-                href="/user/logout"
-                class="text-white hover:bg-blue-500 hover:text-white px-3 py-2 rounded"
-                >Logout</a
-            >
+
+
+
+                <%} %>
         </div>
     </div>
 </nav>
@@ -26,17 +33,23 @@
     <div class="container mx-auto flex justify-center items-center">
         <div class="space-x-4">
             <a
-                href="/api/goals_list"
-                class="text-white hover:bg-blue-500 hover:text-white px-3 py-2 rounded"
-                >Home</a
-            >
+            href="/api/goals_list"
+            class="text-white hover:bg-blue-500 hover:text-white px-3 py-2 rounded"
+            >Home</a
+        >
+            <% if(token){ %>
+           
             <a
                 href="/api/add-goal"
                 class="bg-gray-800 text-white hover:bg-blue-500 hover:text-white px-3 py-2 rounded"
                 >Add Goal</a
             >
-
             <a href="/api/completed_goals">View Completed Goals</a>
+            <% } else { %>
+ 
+
+         
+            <%} %>
         </div>
     </div>
 </nav>

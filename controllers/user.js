@@ -10,17 +10,21 @@ import hashPassword from '../utils/hashPassword.js';
 const controllers = {
     // Render login form
     getLoginForm: (req, res) => {
+        const token = req.cookies.token;
         res.status(200).render('layout', {
             title: 'Enter email and password ',
-            body: 'includes/user/loginForm'
+            body: 'includes/user/loginForm',
+            token
         });
     },
 
     // Render registration form
     getRegistrationForm: (req, res) => {
+        const token = req.cookies.token;
         res.status(200).render('layout', {
             title: 'Register with email and password ',
-            body: 'includes/user/userRegistrationForm'
+            body: 'includes/user/userRegistrationForm',
+            token
         });
     },
 
@@ -84,7 +88,7 @@ const controllers = {
             const hashedPassword = hashPassword(password);
             const newUser = User.add({ email, password: hashedPassword });
             console.log(newUser);
-            res.status(302).redirect('/user/login/');
+            res.status(302).redirect('/user/login');
         } else {
             res.status(400).render('404', {
                 title: 'invalid mail or password',

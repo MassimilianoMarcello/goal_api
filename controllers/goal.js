@@ -3,17 +3,19 @@ import Goal from '../models/goal.js';
 const controllers = {
     getAllGoals: (req, res) => {
         const goals = Goal.getGoalsList();
+        const token = req.cookies.token;
         res.status(200).render('layout', {
             title: 'My goals',
             body: 'includes/goal/goals_list',
-            goals
+            goals,
+            token
         });
     },
 
     getDetails: (req, res) => {
         const goalId = req.params.id;
         const goal = Goal.getById(goalId); // Assicurati che questa funzione restituisca il goal corretto
-    
+        const token = req.cookies.token;
         // Check if the goal was found
         if (!goal) {
             return res.status(404).send('Goal not found'); // Return a 404 error if goal is not found
@@ -23,18 +25,22 @@ const controllers = {
         res.status(200).render('layout', {
             title: goal.name,
             body: 'includes/goal/goal_details',
-            goal // Pass the goal object to the view
+            goal, // Pass the goal object to the view
+            token
         });
     },
     
     addGoalForm: (req, res) => {
+        const token = req.cookies.token;
         res.status(200).render('layout', {
             title: 'Add a new Goal',
-            body: 'includes/goal/addGoalForm'
+            body: 'includes/goal/addGoalForm',
+            token
         });
     },
     addGoal: (req, res) => {
         const { name, description, starting, finishing, priority } = req.body;
+     
         const addNewGoal = {
             name,
             description,
@@ -48,11 +54,13 @@ const controllers = {
     updateGoalForm: (req, res) => {
         const goalId = req.params.id;
         const goal = Goal.getById(goalId);
+        const token = req.cookies.token;
         if (goal) {
             res.status(200).render('layout', {
                 title: `Update Goal: ${goal.name}`,
                 body: 'includes/goal/updateGoalForm', // crea un template per il modulo di aggiornamento
-                goal
+                goal,
+                token
             });
         } else {
             res.status(404).render('404', {
@@ -96,10 +104,12 @@ const controllers = {
     },
     getCompletedGoals: (req, res) => {
         const completedGoals = Goal.getCompletedGoals(); // Ottiene la lista dei goal completati
+        const token = req.cookies.token;
         res.status(200).render('layout', {
             title: 'Completed Goals',
             body: 'includes/goal/completed_goals',
-            completedGoals // Passa la lista dei goal completati alla vista
+            completedGoals, // Passa la lista dei goal completati alla vista
+            token
         });
     },
     deleteGoal: (req, res) => {

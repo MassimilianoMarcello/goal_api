@@ -14,7 +14,7 @@ router.get('/login', getLoginForm);
 router.post('/login', login);
 // logout
 
-router.post('/logout', logout);
+router.get('/logout', logout);
 
 // register
 router.get('/register', getRegistrationForm);
