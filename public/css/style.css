@@ -10,32 +10,32 @@ main {
     align-items: center; 
 justify-content: center;
     min-height: 100vh;
-    margin: 0; /* Rimuove margini predefiniti */
-    background-color: #f9fafb; /* Colore di sfondo chiaro */
+    margin: 0; 
+    background-color: #f9fafb; 
 }
 
 /* Stile per il modulo */
 .register-form {
     display: flex;
     flex-direction: column; 
-    /* align-items: center;  */
+  
     justify-items: center;
-    width: 400px; /* Larghezza del modulo */
-    padding: 20px; /* Padding interno */
+    width: 400px; 
+    padding: 20px; 
     border: 1px solid #e5e7eb; /* Bordo del modulo */
-    border-radius: 8px; /* Angoli arrotondati */
-    background-color: white; /* Sfondo del modulo */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombra per dare profondità */
+    border-radius: 8px; 
+    background-color: white; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 }
 
 /* Pulsanti e input */
 input,
 button {
-    margin-top: 10px; /* Margine superiore per distanziare gli elementi */
+    margin-top: 10px; 
 }
 
 .retour-button {
-    margin-top: 20px; /* Distanza dal modulo */
+    margin-top: 20px; 
 }
 
 

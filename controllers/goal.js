@@ -14,11 +14,11 @@ const controllers = {
 
     getDetails: (req, res) => {
         const goalId = req.params.id;
-        const goal = Goal.getById(goalId); // Assicurati che questa funzione restituisca il goal corretto
+        const goal = Goal.getById(goalId); 
         const token = req.cookies.token;
         // Check if the goal was found
         if (!goal) {
-            return res.status(404).send('Goal not found'); // Return a 404 error if goal is not found
+            return res.status(404).send('Goal not found'); 
         }
     
         // Render the layout with the goal details
@@ -58,7 +58,7 @@ const controllers = {
         if (goal) {
             res.status(200).render('layout', {
                 title: `Update Goal: ${goal.name}`,
-                body: 'includes/goal/updateGoalForm', // crea un template per il modulo di aggiornamento
+                body: 'includes/goal/updateGoalForm', 
                 goal,
                 token
             });
@@ -92,9 +92,9 @@ const controllers = {
     },
     completeGoal: (req, res) => {
         const { id } = req.params;
-        const goal = Goal.completeGoal(id); // Completa l'obiettivo
+        const goal = Goal.completeGoal(id); 
         if (goal) {
-            res.status(200).redirect('/api/goals_list'); // Reindirizza alla lista dopo il completamento
+            res.status(200).redirect('/api/goals_list'); 
         } else {
             res.status(404).render('404', {
                 title: '404 Page',
@@ -103,40 +103,43 @@ const controllers = {
         }
     },
     getCompletedGoals: (req, res) => {
-        const completedGoals = Goal.getCompletedGoals(); // Ottiene la lista dei goal completati
+        const completedGoals = Goal.getCompletedGoals(); 
         const token = req.cookies.token;
         res.status(200).render('layout', {
             title: 'Completed Goals',
             body: 'includes/goal/completed_goals',
-            completedGoals, // Passa la lista dei goal completati alla vista
+            completedGoals,
             token
         });
     },
     deleteGoal: (req, res) => {
-        const goalId = req.params.id; // Ottieni l'ID dal parametro della richiesta
-        const deleted = Goal.deleteGoal(goalId); // Chiama il metodo deleteGoal con l'ID
+        const goalId = req.params.id; 
+        const deleted = Goal.deleteGoal(goalId); 
+        const token = req.cookies.token;
     
         if (deleted) {
-            const redirectPage = req.body.redirect; // Ottieni il valore di redirect dal body della richiesta
+            const redirectPage = req.body.redirect; 
     
-            // Controlla quale pagina reindirizzare
+            
             if (redirectPage === 'completed_goals') {
-                const completedGoals = Goal.getCompletedGoals(); // Ottieni la lista dei goal completati
+                const completedGoals = Goal.getCompletedGoals(); 
                 res.status(200).render('layout', {
                     title: 'Completed Goals',
-                    body: 'includes/goal/completed_goals', // Percorso del template per i goal completati
-                    completedGoals // Passa l'array aggiornato di goal completati al template
+                    body: 'includes/goal/completed_goals', 
+                    completedGoals ,
+                    token
                 });
             } else {
-                const goals = Goal.getGoalsList(); // Ottieni l'elenco aggiornato dei goal
+                const goals = Goal.getGoalsList(); 
                 res.status(200).render('layout', {
                     title: 'Goals List',
-                    body: 'includes/goal/goals_list', // Percorso del template della lista dei goal
-                    goals // Passa l'array aggiornato di goal al template
+                    body: 'includes/goal/goals_list', 
+                    goals ,
+                    token
                 });
             }
         } else {
-            res.status(404).send('Goal not found'); // Gestisci il caso in cui il goal non viene trovato
+            res.status(404).send('Goal not found'); 
         }
     }
     

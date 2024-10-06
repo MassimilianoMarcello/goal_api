@@ -62,11 +62,11 @@ const goals = [
   
   
     static getGoalsList() {
-        return goals.filter(goal => goal.completed === false)
+        return goals.filter(goal => goal.completed === false)  // Filter uncompleted goals
     }
 
     static getCompletedGoals() {
-        return this.goals.filter(goal => goal.completed === true); // Filtra i goal completati
+        return this.goals.filter(goal => goal.completed === true); // Filter completed goals
     }
     
   
@@ -98,25 +98,25 @@ const goals = [
               goal.priority = updatedData.priority || goal.priority;
               return goal;
           }
-          return null; // Goal non trovato
+          return null; 
       }
 
       static completeGoal(id) {
         const goal = this.getById(id);
         if (goal) {
-            goal.completed = !goal.completed; // Inverte lo stato da true a false e viceversa
+            goal.completed = !goal.completed; // Invert from completed:true to completed :false
             return goal;
         }
-        return null; // Obiettivo non trovato
+        return null; // gol not found
     }
     static deleteGoal(id) {
-        const index = this.goals.findIndex(goal => goal.id === id); // Trova l'indice del goal da eliminare
+        const index = this.goals.findIndex(goal => goal.id === id); // i find index from the object to delete
         if (index !== -1) {
-            const deletedGoal = this.goals[index]; // Salva il goal eliminato
-            this.goals.splice(index, 1); // Rimuove il goal dall'array
-            return { success: true, deletedGoal }; // Restituisce un oggetto con il goal eliminato
+            const deletedGoal = this.goals[index]; // save the eliminated goal
+            this.goals.splice(index, 1); // Remove the goal from the array
+            return { success: true, deletedGoal }; // return an object with the deleted goal
         }
-        return { success: false, message: 'Goal not found' }; // Restituisce un messaggio se non trovato
+        return { success: false, message: 'Goal not found' }; // Goal not found
     }
     
     
