@@ -12,13 +12,21 @@ const controllers = {
 
     getDetails: (req, res) => {
         const goalId = req.params.id;
-        const goal = Goal.getById(goalId);
+        const goal = Goal.getById(goalId); // Assicurati che questa funzione restituisca il goal corretto
+    
+        // Check if the goal was found
+        if (!goal) {
+            return res.status(404).send('Goal not found'); // Return a 404 error if goal is not found
+        }
+    
+        // Render the layout with the goal details
         res.status(200).render('layout', {
             title: goal.name,
             body: 'includes/goal/goal_details',
-            goal
+            goal // Pass the goal object to the view
         });
     },
+    
     addGoalForm: (req, res) => {
         res.status(200).render('layout', {
             title: 'Add a new Goal',

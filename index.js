@@ -42,7 +42,7 @@ app.use(logger);
 
 // use routes
 app.use('/api',goalRoutes)
-app.use('/api',userRoutes)
+app.use('/user',userRoutes)
 
 // handle 404
 app.use('*', (req, res) => {

@@ -1,3 +1,99 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* Stile per il layout */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+justify-content: center;
+    min-height: 100vh;
+    margin: 0; /* Rimuove margini predefiniti */
+    background-color: #f9fafb; /* Colore di sfondo chiaro */
+}
+
+/* Stile per il modulo */
+.register-form {
+    display: flex;
+    flex-direction: column; 
+    /* align-items: center;  */
+    justify-items: center;
+    width: 400px; /* Larghezza del modulo */
+    padding: 20px; /* Padding interno */
+    border: 1px solid #e5e7eb; /* Bordo del modulo */
+    border-radius: 8px; /* Angoli arrotondati */
+    background-color: white; /* Sfondo del modulo */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombra per dare profondità */
+}
+
+/* Pulsanti e input */
+input,
+button {
+    margin-top: 10px; /* Margine superiore per distanziare gli elementi */
+}
+
+.retour-button {
+    margin-top: 20px; /* Distanza dal modulo */
+}
+
+
+.register-form,.login-form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    min-width: 600px;
+    margin: 10rem auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+ 
+}
+.form-group {
+    margin-bottom: 15px;
+
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+    padding: 15px;
+    color: #333;
+
+}
+
+.form-group input {
+    width: 80%;
+    margin: 1rem;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #d2b299;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+    
+
+}
+
+.form-group input:focus {
+    border-color: #fb8c00;
+    outline: none;
+}
+
+.submit-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    background-color: #ffa726;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+ 
+}
+
+.submit-btn:hover {
+    background-color: #218838;
+}
